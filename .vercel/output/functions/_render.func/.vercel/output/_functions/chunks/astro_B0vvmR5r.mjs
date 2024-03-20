@@ -1,3 +1,8 @@
+import { bold } from 'kleur/colors';
+import { escape } from 'html-escaper';
+import { clsx } from 'clsx';
+import 'cssesc';
+
 const ClientAddressNotAvailable = {
   name: "ClientAddressNotAvailable",
   title: "`Astro.clientAddress` is not available in current adapter.",
@@ -181,6 +186,11 @@ const MiddlewareNotAResponse = {
   title: "The middleware returned something that is not a `Response` object.",
   message: "Any data returned from middleware must be a valid `Response` object."
 };
+const EndpointDidNotReturnAResponse = {
+  name: "EndpointDidNotReturnAResponse",
+  title: "The endpoint did not return a `Response`.",
+  message: "An endpoint must return either a `Response`, or a `Promise` that resolves with a `Response`."
+};
 const LocalsNotAnObject = {
   name: "LocalsNotAnObject",
   title: "Value assigned to `locals` is not accepted.",
@@ -291,7 +301,7 @@ class AstroError extends Error {
   }
 }
 
-const ASTRO_VERSION = "4.5.1";
+const ASTRO_VERSION = "4.5.8";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
 const ROUTE_TYPE_HEADER = "X-Astro-Route-Type";
 const DEFAULT_404_COMPONENT = "astro-default-404";
@@ -299,33 +309,6 @@ const REROUTABLE_STATUS_CODES = [404, 500];
 const clientAddressSymbol = Symbol.for("astro.clientAddress");
 const clientLocalsSymbol = Symbol.for("astro.locals");
 const responseSentSymbol = Symbol.for("astro.responseSent");
-
-let FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM, isTTY=true;
-if (typeof process !== 'undefined') {
-	({ FORCE_COLOR, NODE_DISABLE_COLORS, NO_COLOR, TERM } = process.env || {});
-	isTTY = process.stdout && process.stdout.isTTY;
-}
-
-const $ = {
-	enabled: !NODE_DISABLE_COLORS && NO_COLOR == null && TERM !== 'dumb' && (
-		FORCE_COLOR != null && FORCE_COLOR !== '0' || isTTY
-	)
-};
-
-function init(x, y) {
-	let rgx = new RegExp(`\\x1b\\[${y}m`, 'g');
-	let open = `\x1b[${x}m`, close = `\x1b[${y}m`;
-
-	return function (txt) {
-		if (!$.enabled || txt == null) return txt;
-		return open + (!!~(''+txt).indexOf(close) ? txt.replace(rgx, close + open) : txt) + close;
-	};
-}
-const bold = init(1, 22);
-const dim = init(2, 22);
-const red = init(31, 39);
-const yellow = init(33, 39);
-const blue = init(34, 39);
 
 async function renderEndpoint(mod, context, ssr, logger) {
   const { request, url } = context;
@@ -357,6 +340,9 @@ Found handlers: ${Object.keys(mod).map((exp) => JSON.stringify(exp)).join(", ")}
     return new Response(null, { status: 500 });
   }
   const response = await handler.call(mod, context);
+  if (!response || response instanceof Response === false) {
+    throw new AstroError(EndpointDidNotReturnAResponse);
+  }
   if (REROUTABLE_STATUS_CODES.includes(response.status)) {
     response.headers.set(REROUTE_DIRECTIVE_HEADER, "no");
   }
@@ -428,49 +414,6 @@ function createAstro(site) {
   };
 }
 
-/**
- * Copyright (C) 2017-present by Andrea Giammarchi - @WebReflection
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-const {replace} = '';
-const ca = /[&<>'"]/g;
-
-const esca = {
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  "'": '&#39;',
-  '"': '&quot;'
-};
-const pe = m => esca[m];
-
-/**
- * Safely escape HTML entities such as `&`, `<`, `>`, `"`, and `'`.
- * @param {string} es the input to safely escape
- * @returns {string} the escaped input, and it **throws** an error if
- *  the input type is unexpected, except for boolean and numbers,
- *  converted as string.
- */
-const escape = es => replace.call(es, ca, pe);
-
 function isPromise(value) {
   return !!value && typeof value === "object" && typeof value.then === "function";
 }
@@ -508,8 +451,6 @@ function createRenderInstruction(instruction) {
 function isRenderInstruction(chunk) {
   return chunk && typeof chunk === "object" && chunk[RenderInstructionSymbol];
 }
-
-function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e)){var o=e.length;for(t=0;t<o;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f);}else for(f in e)e[f]&&(n&&(n+=" "),n+=f);return n}function clsx(){for(var e,t,f=0,n="",o=arguments.length;f<o;f++)(e=arguments[f])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}
 
 const PROP_TYPE = {
   Value: 0,
@@ -901,6 +842,9 @@ Make sure to use the static attribute syntax (\`${key}={value}\`) instead of the
   if (key === "className") {
     return markHTMLString(` class="${toAttributeString(value, shouldEscape)}"`);
   }
+  if (typeof value === "string" && value.includes("&") && urlCanParse(value)) {
+    return markHTMLString(` ${key}="${toAttributeString(value, false)}"`);
+  }
   if (value === true && (key.startsWith("data-") || htmlBooleanAttributes.test(key))) {
     return markHTMLString(` ${key}`);
   } else {
@@ -927,7 +871,7 @@ function renderElement$1(name, { props: _props, children = "" }, shouldEscape = 
     }
   }
   if ((children == null || children == "") && voidElementNames.test(name)) {
-    return `<${name}${internalSpreadAttributes(props, shouldEscape)} />`;
+    return `<${name}${internalSpreadAttributes(props, shouldEscape)}>`;
   }
   return `<${name}${internalSpreadAttributes(props, shouldEscape)}>${children}</${name}>`;
 }
@@ -961,6 +905,14 @@ function promiseWithResolvers() {
     resolve,
     reject
   };
+}
+function urlCanParse(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 const uniqueElements = (item, index, all) => {
@@ -1373,6 +1325,9 @@ async function renderToReadableStream(result, componentFactory, props, children,
           setTimeout(() => controller.error(e), 0);
         }
       })();
+    },
+    cancel() {
+      result.cancelled = true;
     }
   });
 }
@@ -1420,11 +1375,10 @@ async function renderToAsyncIterable(result, componentFactory, props, children, 
   }
   let error = null;
   let next = promiseWithResolvers();
-  let cancelled = false;
   const buffer = [];
   const iterator = {
     async next() {
-      if (cancelled)
+      if (result.cancelled)
         return { done: true, value: void 0 };
       await next.promise;
       if (error) {
@@ -1450,7 +1404,7 @@ async function renderToAsyncIterable(result, componentFactory, props, children, 
       return returnValue;
     },
     async return() {
-      cancelled = true;
+      result.cancelled = true;
       return { done: true, value: void 0 };
     }
   };
@@ -1836,19 +1790,27 @@ function renderAstroComponent(result, displayName, Component, props, slots = {})
 }
 async function renderComponent(result, displayName, Component, props, slots = {}) {
   if (isPromise(Component)) {
-    Component = await Component;
+    Component = await Component.catch(handleCancellation);
   }
   if (isFragmentComponent(Component)) {
-    return await renderFragmentComponent(result, slots);
+    return await renderFragmentComponent(result, slots).catch(handleCancellation);
   }
   props = normalizeProps(props);
   if (isHTMLComponent(Component)) {
-    return await renderHTMLComponent(result, Component, props, slots);
+    return await renderHTMLComponent(result, Component, props, slots).catch(handleCancellation);
   }
   if (isAstroComponentFactory(Component)) {
     return renderAstroComponent(result, displayName, Component, props, slots);
   }
-  return await renderFrameworkComponent(result, displayName, Component, props, slots);
+  return await renderFrameworkComponent(result, displayName, Component, props, slots).catch(
+    handleCancellation
+  );
+  function handleCancellation(e) {
+    if (result.cancelled)
+      return { render() {
+      } };
+    throw e;
+  }
 }
 function normalizeProps(props) {
   if (props["class:list"] !== void 0) {
@@ -2168,117 +2130,6 @@ async function renderPage(result, componentFactory, props, children, streaming, 
   return response;
 }
 
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
-/*! https://mths.be/cssesc v3.0.0 by @mathias */
-
-var object = {};
-var hasOwnProperty = object.hasOwnProperty;
-var merge = function merge(options, defaults) {
-	if (!options) {
-		return defaults;
-	}
-	var result = {};
-	for (var key in defaults) {
-		// `if (defaults.hasOwnProperty(key) { … }` is not needed here, since
-		// only recognized option names are used.
-		result[key] = hasOwnProperty.call(options, key) ? options[key] : defaults[key];
-	}
-	return result;
-};
-
-var regexAnySingleEscape = /[ -,\.\/:-@\[-\^`\{-~]/;
-var regexSingleEscape = /[ -,\.\/:-@\[\]\^`\{-~]/;
-var regexExcessiveSpaces = /(^|\\+)?(\\[A-F0-9]{1,6})\x20(?![a-fA-F0-9\x20])/g;
-
-// https://mathiasbynens.be/notes/css-escapes#css
-var cssesc = function cssesc(string, options) {
-	options = merge(options, cssesc.options);
-	if (options.quotes != 'single' && options.quotes != 'double') {
-		options.quotes = 'single';
-	}
-	var quote = options.quotes == 'double' ? '"' : '\'';
-	var isIdentifier = options.isIdentifier;
-
-	var firstChar = string.charAt(0);
-	var output = '';
-	var counter = 0;
-	var length = string.length;
-	while (counter < length) {
-		var character = string.charAt(counter++);
-		var codePoint = character.charCodeAt();
-		var value = void 0;
-		// If it’s not a printable ASCII character…
-		if (codePoint < 0x20 || codePoint > 0x7E) {
-			if (codePoint >= 0xD800 && codePoint <= 0xDBFF && counter < length) {
-				// It’s a high surrogate, and there is a next character.
-				var extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) {
-					// next character is low surrogate
-					codePoint = ((codePoint & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000;
-				} else {
-					// It’s an unmatched surrogate; only append this code unit, in case
-					// the next code unit is the high surrogate of a surrogate pair.
-					counter--;
-				}
-			}
-			value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-		} else {
-			if (options.escapeEverything) {
-				if (regexAnySingleEscape.test(character)) {
-					value = '\\' + character;
-				} else {
-					value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-				}
-			} else if (/[\t\n\f\r\x0B]/.test(character)) {
-				value = '\\' + codePoint.toString(16).toUpperCase() + ' ';
-			} else if (character == '\\' || !isIdentifier && (character == '"' && quote == character || character == '\'' && quote == character) || isIdentifier && regexSingleEscape.test(character)) {
-				value = '\\' + character;
-			} else {
-				value = character;
-			}
-		}
-		output += value;
-	}
-
-	if (isIdentifier) {
-		if (/^-[-\d]/.test(output)) {
-			output = '\\-' + output.slice(1);
-		} else if (/\d/.test(firstChar)) {
-			output = '\\3' + firstChar + ' ' + output.slice(1);
-		}
-	}
-
-	// Remove spaces after `\HEX` escapes that are not followed by a hex digit,
-	// since they’re redundant. Note that this is only possible if the escape
-	// sequence isn’t preceded by an odd number of backslashes.
-	output = output.replace(regexExcessiveSpaces, function ($0, $1, $2) {
-		if ($1 && $1.length % 2) {
-			// It’s not safe to remove the space, so don’t.
-			return $0;
-		}
-		// Strip the space.
-		return ($1 || '') + $2;
-	});
-
-	if (!isIdentifier && options.wrap) {
-		return quote + output + quote;
-	}
-	return output;
-};
-
-// Expose default options (so they can be overridden globally).
-cssesc.options = {
-	'escapeEverything': false,
-	'isIdentifier': false,
-	'quotes': 'single',
-	'wrap': false
-};
-
-cssesc.version = '3.0.0';
-
 "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_".split("").reduce((v, c) => (v[c.charCodeAt(0)] = c, v), []);
 "-0123456789_".split("").reduce((v, c) => (v[c.charCodeAt(0)] = c, v), []);
 
@@ -2299,4 +2150,4 @@ function spreadAttributes(values = {}, _name, { class: scopedClassName } = {}) {
   return markHTMLString(output);
 }
 
-export { renderEndpoint as $, AstroError as A, GetStaticPathsExpectedParams as B, GetStaticPathsInvalidRouteParam as C, DEFAULT_404_COMPONENT as D, ExpectedImage as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, PrerenderDynamicEndpointPathCollide as H, IncompatibleDescriptorOptions as I, ReservedSlotName as J, renderSlotToString as K, LocalImageUsedWrongly as L, MissingImageDimension as M, NoMatchingStaticPathFound as N, renderJSX as O, PageNumberParamNotFound as P, chunkToString as Q, ResponseSentError as R, LocalsNotAnObject as S, clientLocalsSymbol as T, UnsupportedImageFormat as U, clientAddressSymbol as V, ClientAddressNotAvailable as W, StaticClientAddressNotAvailable as X, ASTRO_VERSION as Y, responseSentSymbol as Z, AstroResponseHeadersReassigned as _, UnsupportedImageConversion as a, renderPage as a0, REROUTABLE_STATUS_CODES as a1, MissingSharp as b, bold as c, dim as d, blue as e, InvalidImageService as f, getDefaultExportFromCjs as g, ExpectedImageOptions as h, createAstro as i, createComponent as j, ImageMissingAlt as k, renderTemplate as l, maybeRenderHead as m, addAttribute as n, renderHead as o, renderSlot as p, renderComponent as q, red as r, spreadAttributes as s, MiddlewareNoDataOrNextCalled as t, MiddlewareNotAResponse as u, ROUTE_TYPE_HEADER as v, REROUTE_DIRECTIVE_HEADER as w, InvalidGetStaticPathsReturn as x, yellow as y, InvalidGetStaticPathsEntry as z };
+export { AstroError as A, chunkToString as B, LocalsNotAnObject as C, DEFAULT_404_COMPONENT as D, ExpectedImage as E, FailedToFetchRemoteImageDimensions as F, GetStaticPathsRequired as G, clientLocalsSymbol as H, IncompatibleDescriptorOptions as I, clientAddressSymbol as J, ClientAddressNotAvailable as K, LocalImageUsedWrongly as L, MissingImageDimension as M, NoMatchingStaticPathFound as N, ASTRO_VERSION as O, PageNumberParamNotFound as P, responseSentSymbol as Q, ResponseSentError as R, StaticClientAddressNotAvailable as S, AstroResponseHeadersReassigned as T, UnsupportedImageFormat as U, renderPage as V, renderEndpoint as W, REROUTABLE_STATUS_CODES as X, UnsupportedImageConversion as a, MissingSharp as b, InvalidImageService as c, ExpectedImageOptions as d, createAstro as e, createComponent as f, ImageMissingAlt as g, addAttribute as h, renderHead as i, renderSlot as j, renderComponent as k, MiddlewareNoDataOrNextCalled as l, maybeRenderHead as m, MiddlewareNotAResponse as n, ROUTE_TYPE_HEADER as o, REROUTE_DIRECTIVE_HEADER as p, InvalidGetStaticPathsReturn as q, renderTemplate as r, spreadAttributes as s, InvalidGetStaticPathsEntry as t, GetStaticPathsExpectedParams as u, GetStaticPathsInvalidRouteParam as v, PrerenderDynamicEndpointPathCollide as w, ReservedSlotName as x, renderSlotToString as y, renderJSX as z };

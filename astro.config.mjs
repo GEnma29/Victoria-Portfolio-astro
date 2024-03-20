@@ -8,10 +8,4 @@ export default defineConfig({
   integrations: [db(), auth()],
   output: "server",
   adapter: vercelServerless(),
-  vite: {
-    ssr: {
-      noExternal: 'cookie'
-    }
-  },
-  integrations: [react(), mdx()]
 });

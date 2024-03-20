@@ -1,4 +1,7 @@
-import { i as createAstro, j as createComponent, l as renderTemplate, n as addAttribute, o as renderHead, p as renderSlot, m as maybeRenderHead, q as renderComponent } from '../astro_CBoap-3a.mjs';
+import { e as createAstro, f as createComponent, r as renderTemplate, h as addAttribute, i as renderHead, j as renderSlot, m as maybeRenderHead, k as renderComponent } from '../astro_B0vvmR5r.mjs';
+import 'kleur/colors';
+import 'html-escaper';
+import 'clsx';
 /* empty css                          */
 
 const $$Astro$u = createAstro();
