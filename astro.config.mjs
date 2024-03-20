@@ -7,5 +7,11 @@ import vercelServerless from '@astrojs/vercel/serverless';
 export default defineConfig({
   integrations: [db(), auth()],
   output: "server",
-  adapter: vercelServerless()
+  adapter: vercelServerless(),
+  vite: {
+    ssr: {
+      noExternal: 'cookie'
+    }
+  },
+  integrations: [react(), mdx()]
 });
