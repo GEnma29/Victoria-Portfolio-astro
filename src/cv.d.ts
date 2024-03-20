@@ -49,6 +49,7 @@ export interface CV {
     endDate: DateStr | null
     summary:  string[]
     highlights: Highlight
+    github?:string
   }
   
   type DateStr = `${string}-${string}-${string}`
