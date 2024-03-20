@@ -31,7 +31,7 @@ import { work } from "@cv"
                 </header>
 
                 <footer>
-                  <p>{summary}</p>
+                {summary.map((text)=> <p>{text}</p>)}
                 </footer>
               </article>
             </li>
@@ -78,6 +78,9 @@ import { work } from "@cv"
     color: #555;
     font-size: 0.85rem;
     min-width: 102px;
+  }
+  p {
+    margin-top: 1rem;
   }
 
   @media (width <= 700px) {

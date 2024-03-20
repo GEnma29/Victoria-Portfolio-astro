@@ -1,66 +1,74 @@
 {
     "basics": {
-      "name": "Miguel Ángel Durán",
-      "label": "Full Stack Developer con más de 15 años de experiencia & Creador de Contenido de Programación",
+      "name": "Enmanuel Gerardo Alfonzo",
+      "label": "Full Stack Developer con más de 4 años de experiencia",
       "image": "/me.webp",
-      "email": "miduga@gmail.com",
+      "email": "14-05775@usb.ve",
       "phone": "+34 688888888",
-      "url": "https://midu.dev",
-      "summary": "+15 años de experiencia como Desarrollador Web. Actualmente soy Creador de Contenido y Divulgador sobre Programación. Vivo en Barcelona, España. He trabajado en diferentes entornos: desde acelerar el desarrollo de start-ups hasta liderando equipos de empresas multinacionales.",
+      "url": "https://github.com/GEnma29",
+      "summary": "+4 años de experiencia como Desarrollador Web.Actualmente desempeño el cargo de Developer Lead Frontend Architect en ICIVA, donde lidero un equipo de desarrollo frontend y contribuyo a la construcción de soluciones tecnológicas de alto impacto. A lo largo de mi trayectoria, he tenido la oportunidad de trabajar en diversos entornos, desde fintech hasta SaaS, adquiriendo una amplia gama de habilidades y experiencia.",
       "location": {
         "address": "",
-        "postalCode": "08820",
-        "city": "el Prat de Llobregat",
-        "countryCode": "ES",
-        "region": "España"
+        "postalCode": "1030",
+        "city": "Caracas",
+        "countryCode": "VE",
+        "region": "Venezuela"
       },
       "profiles": [
         {
           "network": "LinkedIn",
-          "username": "midudev",
-          "url": "https://linkedin.com/in/midudev"
+          "username": "genmanuel",
+          "url": "https://www.linkedin.com/in/genmanuel/"
         },
         {
           "network": "X",
-          "username": "midudev",
-          "url": "https://x.com/midudev"
+          "username": "genmanuel",
+          "url": "https://twitter.com/EnmanuelAlfonz6"
         },
         {
           "network": "GitHub",
-          "username": "midudev",
-          "url": "https://github.com/midudev"
+          "username": "GEnma29",
+          "url": "https://github.com/GEnma29"
         }
       ]
     },
     "work": [
       {
-        "name": "midudev",
-        "position": "Divulgador sobre Programación Web",
-        "url": "https://twitch.tv/midudev",
-        "startDate": "2021-01-01",
+        "name": "Enmanuel Gerardo Alfonzo",
+        "position": "Consultor",
+        "url": "",
+        "startDate": "2023-01-04",
         "endDate": null,
-        "summary": "Streamer de programación más visto en Español en Twitch. +1 millón de seguidores entre todas mis redes sociales. Reconocido por Google, Microsoft y GitHub por mi impacto en la comunidad de desarrolladores.",
+        "summary": [
+          "En ICIVA, asumí un rol proactivo en la modernización de diversos productos principales, tanto para usuarios como para uso interno. Lideré la mejora de la plataforma de creación de eventos, integrando pasarelas de pago, implementando Socket.io para la gestión en tiempo real y creando un portal de administración por roles. Además, realicé la migración de herramientas internas a versiones modernas de Node.js. Mi experiencia en modernización de aplicaciones web, mis habilidades técnicas y mi enfoque en la resolución de problemas me permitieron contribuir significativamente al éxito de estos proyectos.",
+          "En Magnettu, desempeñé un papel clave en la construcción de soluciones que mejoraron la experiencia del usuario y agilizaron la comunicación. Diseñé y desarrollé un módulo de gestión de empleados que facilitó la entrega dirigida de contenido en redes sociales. Además, mejoré el módulo de correo electrónico, creé un módulo de chat para clientes y optimicé el editor de texto para una creación de contenido eficiente. Mis habilidades de desarrollo full-stack, utilizando React, GraphQL, TypeScript, Context, OpenAPI, Node.js y Express, me permitieron contribuir significativamente al crecimiento de Magnettu."],
         "highlights": [
           "Started the company"
         ]
       },
       {
-        "name": "Adevinta",
-        "position": "Lead Frontend Architect",
-        "url": "https://twitch.tv/midudev",
-        "startDate": "2016-06-01",
-        "endDate": "2022-09-01",
-        "summary": "Lideré una convergencia técnica entre diferentes productos y migramos una arquitectura monolítica a otra más flexible y optimizada. Fomenté buenas prácticas y mejoras en la cultura de rendimiento, además de la entrega rápida de valor a los usuarios.",
+        "name": "Zulu",
+        "position": "Senior FullStack Developer",
+        "url": "https://zulu.com.co/",
+        "startDate": "2022-06-01",
+        "endDate": "2023-09-01",
+        "summary":[ 
+          "En mi rol como desarrollador full-stack, asumí la responsabilidad de diseñar e implementar nuevas funcionalidades para dos productos clave:",
+          "Portal de administración: Creé una plataforma que permite visualizar todas las transacciones realizadas en la aplicación Zulu. ,Implementé un módulo de fraude donde se pueden ver y editar todas las transacciones sospechosas. Desarrollé un módulo de países para administrar información como proveedor de liquidez, código de área y más. Esta herramienta se construyó utilizando Next.js.",
+          "Aplicación Zulu: Lideré el desarrollo de las funcionalidades necesarias para habilitar nuevos países como México y Perú. Realicé cambios en diversos módulos de la aplicación, incluyendo KYC, Ingreso de Efectivo, Retiro de Efectivo, Enviar y Recibir. Aseguré que todos los procesos se puedan modificar desde el portal de administración."
+      ],
         "highlights": [
           "Started the company"
         ]
       },
       {
-        "name": "Hubii",
-        "position": "Senior FrontEnd Developer",
-        "startDate": "2011-03-01",
-        "endDate": "2016-05-01",
-        "summary": "Desarrollé una plataforma de noticias geolocalizadas y una API para consumir la información. Escalé los servicios para soportar la carga de más de cientos de miles de peticiones al día. Recorté los tiempos de entrega y despliegues a producción a la mitad. Colaboré con Mozilla y Telefónica para desarrollar la primera app para televisores con FirefoxOS.",
+        "name": "Simpol",
+        "position": "FrontEnd Developer",
+        "startDate": "2021-03-01",
+        "url": "https://www.linkedin.com/company/simpol-by-shalder/about/",
+        "endDate": "2022-05-01",
+        "summary": ["Diseñé y construí una aplicación completa de monedero para obtener recompensas por staking de UST. Documenté e implementé micro-frontends dentro de la aplicación Simpol. Implementé mejoras y nuevas funcionalidades en la aplicación Simpol existente.",
+        "Migré la base de código de la aplicación Simpol a React Native."],
         "highlights": [
           "Started the company"
         ]
@@ -78,12 +86,12 @@
       ]
     }],
     "education": [{
-      "institution": "Universitat Oberta de Catalunya",
-      "url": "https://www.uoc.edu/portal/es/index.html",
-      "area": "Ingeniero de Software",
+      "institution": "Universidad Simón Bolívar",
+      "url": "http://www.usb.ve/",
+      "area": "Tecnología Electrónica",
       "studyType": "Bachelor",
-      "startDate": "2003-01-01",
-      "endDate": "2009-01-01",
+      "startDate": "2014-12-01",
+      "endDate": "2020-01-01",
       "score": "4.0",
       "courses": [
         "DB1101 - Basic SQL"
@@ -185,6 +193,13 @@
         "keywords": [
           "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
         ]
+      },
+      {
+        "name": "ReactNative",
+        "level": "Avanzado",
+        "keywords": [
+          "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
+        ]
       }
     ],
     "languages": [
@@ -210,66 +225,34 @@
     }],
     "projects": [
       {
-        "name": "mars.codes",
+        "name": "login web3 with next Auth",
         "isActive": true,
-        "description": "Historia interactiva con retos de programación para viajar a Marte",
+        "description": "login with web3",
         "highlights": [
-          "Elige tu propia aventura",
-          "En desarrollo"
+          "web3",
+          "Nextjs"
         ],
-        "url": "https://mars.codes"
+        "url": "https://github.com/GEnma29/login-web3-next-auth"
       },
       {
-        "name": "AdventJS",
+        "name": "FastApi with mongoDb",
         "isActive": true,
-        "description": "Retos de programación en JavaScript para cada día de diciembre hasta Navidad",
+        "description": "FastApi microservice",
         "highlights": [
-          "+1 millón de visitas",
-          "Multidioma",
-          "JavaScript & TypeScript"
+          "FastApi",
+          "MongoDB"
         ],
-        "url": "https://adventjs.dev"
+        "url": "https://github.com/GEnma29/fast-api-register/tree/main"
       },
       {
-        "name": "Codember",
+        "name": "CryptoApp Native",
         "isActive": true,
-        "description": "Juego interactivo de programación con retos y secretos",
+        "description": "Crypto List",
         "highlights": [
-          "+2000 usuarios activos",
-          "Retos para cualquier lenguaje"
+          "React Native",
+          "web3"
         ],
-        "url": "https://codember.dev"
-      },
-      {
-        "name": "codi.link",
-        "isActive": true,
-        "description": "Playground de código HTML, CSS y JavaScript para compartir",
-        "highlights": [
-          "100k visitas al mes",
-          "Desarrollado por la comunidad"
-        ],
-        "url": "https://codi.link",
-        "github": "https://github.com/midudev/codi.link"
-      },
-      {
-        "name": "Pruebas Técnicas",
-        "isActive": true,
-        "description": "Lista de pruebas técnicas de empresas para practicar programación",
-        "highlights": [
-          "100% gratuito",
-          "+500 soluciones de la comunidad"
-        ],
-        "url": "https://pruebastecnicas.com",
-        "github": "https://github.com/midudev/pruebas-tecnicas"
-      },
-      {
-        "name": "miduConf",
-        "description": "Conferencia de programación en streaming para la comunidad hispanohablante con charlas top",
-        "highlights": [
-          "+15k tickets repartidos",
-          "+50k espectadores en directo"
-        ],
-        "url": "https://miduconf.com"
+        "url": "https://github.com/GEnma29/CryptoAppNative"
       }
     ]
   }

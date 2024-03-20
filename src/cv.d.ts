@@ -1,3 +1,5 @@
+import type { string } from "astro/zod"
+
 export interface CV {
     basics: Basics
     work: Array<Work>
@@ -45,7 +47,7 @@ export interface CV {
     url: string
     startDate: DateStr
     endDate: DateStr | null
-    summary: string
+    summary:  string[]
     highlights: Highlight
   }
   
