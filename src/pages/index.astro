@@ -1,1 +1,59 @@
-<meta http-equiv="refresh" content="0;url=/en/" />
+---
+import Layout from "@/layouts/Layout.astro"
+
+import About from "@components/sections/About.astro"
+import Education from "@/components/sections/Education.astro"
+import Experience from "@/components/sections/Experience.astro"
+import Hero from "@/components/sections/Hero.astro"
+import Projects from "@/components/sections/Projects.astro"
+import Skills from "@/components/sections/Skills.astro"
+import KeyboardManager from "@/components/KeyboardManager.astro"
+
+import { basics } from "@cvEnglish"
+// import {SignIn, SignOut} from 'auth-astro/components'
+// import {getSession} from 'auth-astro/server'
+
+// const session = await getSession(Astro.request)
+const { name, label } = basics
+---
+
+<Layout title={`Portafolio de ${name} - ${label}`}>
+  <main>
+    <Hero />
+    <About />
+    <Experience />
+    <Education />
+    <Projects />
+    <Skills />
+  </main>
+
+  <KeyboardManager />
+</Layout>
+
+<!-- <div>
+  <main>
+    <h2>Hola
+    </h2>
+    {
+      session ? 
+      <>
+      <p>Hola {session.user?.email}</p>
+      <SignOut>Cerrar session</SignOut>
+      </>
+      : <SignIn provider={"google"}>Iniciar con google</SignIn>
+    }
+  </main>
+</div> -->
+<style>
+  main {
+    padding: 4rem;
+    margin: auto;
+    width: 100%;
+  }
+
+  @media (width <= 700px) {
+    main {
+      padding: 2rem;
+    }
+  }
+</style>

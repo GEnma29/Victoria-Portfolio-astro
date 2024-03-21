@@ -1,7 +1,12 @@
 ---
 import Section from "../Section.astro"
 
-import { work } from "@cv"
+import {getI18N} from "@utils/cv-i18n"
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+
+const {work} = i18n
 ---
 
 <Section title="Experiencia laboral">
