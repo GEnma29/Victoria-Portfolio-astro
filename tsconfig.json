@@ -6,6 +6,9 @@
       "@cv": [
         "./cv.json"
       ],
+      "@cv/english": [
+        "./cv_english.json"
+      ],
       "@icons": [
         "src/icons/*"
       ],
