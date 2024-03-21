@@ -6,7 +6,7 @@
       "@cv": [
         "./cv.json"
       ],
-      "@cv/english": [
+      "@cvEnglish": [
         "./cv_english.json"
       ],
       "@icons": [
