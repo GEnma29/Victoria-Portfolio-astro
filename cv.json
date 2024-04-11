@@ -1,12 +1,12 @@
 {
     "basics": {
-      "name": "Enmanuel Gerardo Alfonzo",
-      "label": "Full Stack Developer con más de 4 años de experiencia",
+      "name": "Stephany Victoria jimenez Gonzalez",
+      "label": "UX/UI designer | Ux writer | Marketing specialist",
       "image": "/me.webp",
-      "email": "14-05775@usb.ve",
-      "phone": "+34 688888888",
+      "email": "victoria270698@gmail.com",
+      "phone": "+58 4129927836",
       "url": "https://github.com/GEnma29",
-      "summary": "+4 años de experiencia como Desarrollador Web.Actualmente desempeño el cargo de Developer Lead Frontend Architect en ICIVA, donde lidero un equipo de desarrollo frontend y contribuyo a la construcción de soluciones tecnológicas de alto impacto. A lo largo de mi trayectoria, he tenido la oportunidad de trabajar en diversos entornos, desde fintech hasta SaaS, adquiriendo una amplia gama de habilidades y experiencia.",
+      "summary": "Soy una profesional apasionada por el diseño y la experiencia del usuario. Tengo una amplia experiencia en marketing, donde he desarrollado habilidades en diseño de banners, SEO y UX writing. Ahora estoy buscando un nuevo reto en el campo del diseño de interfaces de usuario, donde pueda utilizar mi creatividad y mis habilidades analíticas para crear experiencias digitales atractivas y fáciles de usar.",
       "location": {
         "address": "",
         "postalCode": "1030",
@@ -17,58 +17,56 @@
       "profiles": [
         {
           "network": "LinkedIn",
-          "username": "genmanuel",
-          "url": "https://www.linkedin.com/in/genmanuel/"
-        },
-        {
-          "network": "X",
-          "username": "genmanuel",
-          "url": "https://twitter.com/EnmanuelAlfonz6"
-        },
-        {
-          "network": "GitHub",
-          "username": "GEnma29",
-          "url": "https://github.com/GEnma29"
+          "username": "stephany victoria jimenez gonzalez",
+          "url": "Análisis de métricas y seguimiento del rendimiento del contenido."
         }
       ]
     },
     "work": [
       {
-        "name": "Enmanuel Gerardo Alfonzo",
-        "position": "Consultor",
-        "url": "",
-        "startDate": "2023-01-04",
+        "name": "Nadds Publicidad",
+        "position": "Content",
+        "url": "https://www.linkedin.com/company/nadds-publicidad/",
+        "startDate": "2021-01-04",
         "endDate": null,
         "summary": [
-          "En ICIVA, asumí un rol proactivo en la modernización de diversos productos principales, tanto para usuarios como para uso interno. Lideré la mejora de la plataforma de creación de eventos, integrando pasarelas de pago, implementando Socket.io para la gestión en tiempo real y creando un portal de administración por roles. Además, realicé la migración de herramientas internas a versiones modernas de Node.js. Mi experiencia en modernización de aplicaciones web, mis habilidades técnicas y mi enfoque en la resolución de problemas me permitieron contribuir significativamente al éxito de estos proyectos.",
-          "En Magnettu, desempeñé un papel clave en la construcción de soluciones que mejoraron la experiencia del usuario y agilizaron la comunicación. Diseñé y desarrollé un módulo de gestión de empleados que facilitó la entrega dirigida de contenido en redes sociales. Además, mejoré el módulo de correo electrónico, creé un módulo de chat para clientes y optimicé el editor de texto para una creación de contenido eficiente. Mis habilidades de desarrollo full-stack, utilizando React, GraphQL, TypeScript, Context, OpenAPI, Node.js y Express, me permitieron contribuir significativamente al crecimiento de Magnettu."],
-        "highlights": [
-          "Started the company"
-        ]
-      },
-      {
-        "name": "Zulu",
-        "position": "Senior FullStack Developer",
-        "url": "https://zulu.com.co/",
-        "startDate": "2022-06-01",
-        "endDate": "2023-09-01",
-        "summary":[ 
-          "En mi rol como desarrollador full-stack, asumí la responsabilidad de diseñar e implementar nuevas funcionalidades para dos productos clave:",
-          "Portal de administración: Creé una plataforma que permite visualizar todas las transacciones realizadas en la aplicación Zulu. ,Implementé un módulo de fraude donde se pueden ver y editar todas las transacciones sospechosas. Desarrollé un módulo de países para administrar información como proveedor de liquidez, código de área y más. Esta herramienta se construyó utilizando Next.js.",
-          "Aplicación Zulu: Lideré el desarrollo de las funcionalidades necesarias para habilitar nuevos países como México y Perú. Realicé cambios en diversos módulos de la aplicación, incluyendo KYC, Ingreso de Efectivo, Retiro de Efectivo, Enviar y Recibir. Aseguré que todos los procesos se puedan modificar desde el portal de administración."
+          "Creación de contenido atractivo para diferentes plataformas, incluyendo blogs, redes sociales y sitios web",
+          "Edición de videos y redacción de guiones para contenido multimedia.",
+          "Diseño de publicaciones para redes sociales y otros materiales visuales",
+          "Análisis de métricas y seguimiento del rendimiento del contenido."
+          
       ],
         "highlights": [
           "Started the company"
         ]
       },
       {
-        "name": "Simpol",
-        "position": "FrontEnd Developer",
-        "startDate": "2021-03-01",
-        "url": "https://www.linkedin.com/company/simpol-by-shalder/about/",
-        "endDate": "2022-05-01",
-        "summary": ["Diseñé y construí una aplicación completa de monedero para obtener recompensas por staking de UST. Documenté e implementé micro-frontends dentro de la aplicación Simpol. Implementé mejoras y nuevas funcionalidades en la aplicación Simpol existente.",
-        "Migré la base de código de la aplicación Simpol a React Native."],
+        "name": "Urbalan",
+        "position": "Editor / Content ",
+        "url": "https://zulu.com.co/",
+        "startDate": "2022-06-01",
+        "endDate": "2023-09-01",
+        "summary":[ 
+          "Creación de contenido para marcas importantes como Plumrose y Maizoritos: Redacción de textos, guiones para videos, slogans, etc., teniendo en cuenta la voz de la marca y el público objetivo.",
+          "Producción de videos: Filmación, edición y postproducción de videos para redes sociales y campañas publicitarias."
+      ],
+        "highlights": [
+          "Started the company"
+        ]
+      },
+      {
+        "name": "Street Marketing - Asegurate - Grupo Orinoco",
+        "position": "Redactora web SEO | UX writer | UX/UI Designer",
+        "startDate": "2019-02-01",
+        "url": "",
+        "endDate": "2021-05-01",
+        "summary": [
+        "Responsabilidades:",
+        "Creación de contenido web optimizado para SEO: Redacción de artículos, blogs, landing pages, etc., teniendo en cuenta las mejores prácticas de SEO para mejorar la visibilidad del sitio web en los buscadores.",
+        "Diseño UX/UI: Diseño de interfaces de usuario para el sitio web, teniendo en cuenta la usabilidad y la experiencia del usuario",
+        "Estrategia digital: Creación e implementación de estrategias de marketing digital para la marca, incluyendo SEO, SEM, email marketing y redes sociales.",
+        "Herramientas: uso de herramientas como WordPress, Google Analytics, Figma, Adobe Cloud (premier,after effects)"
+      ],
         "highlights": [
           "Started the company"
         ]
@@ -86,12 +84,12 @@
       ]
     }],
     "education": [{
-      "institution": "Universidad Simón Bolívar",
-      "url": "http://www.usb.ve/",
-      "area": "Tecnología Electrónica",
+      "institution": "Platzi",
+      "url": "https://platzi.com/",
+      "area": "Tecnología & Marketing",
       "studyType": "Bachelor",
-      "startDate": "2014-12-01",
-      "endDate": "2020-01-01",
+      "startDate": "2019-12-01",
+      "endDate": "2022-02-01",
       "score": "4.0",
       "courses": [
         "DB1101 - Basic SQL"
@@ -118,6 +116,13 @@
     }],
     "skills": [
       {
+        "name": "Figma",
+        "level": "Master",
+        "keywords": [
+          "Desarrollo Web", "Designer"
+        ]
+      },
+      {
         "name": "HTML",
         "level": "Master",
         "keywords": [
@@ -139,68 +144,11 @@
         ]
       },
       {
-        "name": "Tailwind",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "CSS Framework", "Diseño Responsive"
-        ]
-      },
-      {
-        "name": "TypeScript",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "Backend", "JavaScript Superset"
-        ]
-      },
-      {
-        "name": "Node",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Backend", "JavaScript", "Servidor"
-        ]
-      },
-      {
-        "name": "MySQL",
-        "level": "Avanzado",
-        "keywords": [
-          "Bases de Datos", "SQL", "Almacenamiento de Datos", "Backend"
-        ]
-      },
-      {
-        "name": "Git",
-        "level": "Avanzado",
-        "keywords": [
-          "Control de Versiones", "Colaboración", "Código Fuente"
-        ]
-      },
-      {
-        "name": "GitHub",
-        "level": "Avanzado",
-        "keywords": [
-          "Control de Versiones", "Colaboración", "Código Fuente", "Git"
-        ]
-      },
-      {
-        "name": "Next.js",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "React Framework", "SSR", "Static Generation"
-        ]
-      },
-      {
-        "name": "React",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
-        ]
-      },
-      {
-        "name": "ReactNative",
-        "level": "Avanzado",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "JavaScript Library", "UI"
-        ]
+        "name": "Notion",
+        "level": "Master",
+        "keywords": ["Ux/Ui Designer"]
       }
+      
     ],
     "languages": [
       {
@@ -224,38 +172,6 @@
       "reference": "Reference…"
     }],
     "projects": [
-      {
-        "name": "login web3 with next Auth",
-        "isActive": true,
-        "description": "login with web3",
-        "highlights": [
-          "web3",
-          "Nextjs"
-        ],
-        "github": "",        
-        "url": "https://github.com/GEnma29/login-web3-next-auth"
-      },
-      {
-        "name": "FastApi with mongoDb",
-        "isActive": true,
-        "description": "FastApi microservice",
-        "highlights": [
-          "FastApi",
-          "MongoDB"
-        ],
-        "github": "",        
-        "url": "https://github.com/GEnma29/fast-api-register/tree/main"
-      },
-      {
-        "name": "CryptoApp Native",
-        "isActive": true,
-        "description": "Crypto List",
-        "highlights": [
-          "React Native",
-          "web3"
-        ],
-        "github": "",        
-        "url": "https://github.com/GEnma29/CryptoAppNative"
-      }
+     
     ]
   }
