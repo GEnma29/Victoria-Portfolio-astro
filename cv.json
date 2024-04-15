@@ -123,27 +123,6 @@
         ]
       },
       {
-        "name": "HTML",
-        "level": "Master",
-        "keywords": [
-          "Desarrollo Web", "Frontend"
-        ]
-      },
-      {
-        "name": "CSS",
-        "level": "Master",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "Diseño Responsive"
-        ]
-      },
-      {
-        "name": "JavaScript",
-        "level": "Master",
-        "keywords": [
-          "Desarrollo Web", "Frontend", "Backend", "Fullstack"
-        ]
-      },
-      {
         "name": "Notion",
         "level": "Master",
         "keywords": ["Ux/Ui Designer"]
